@@ -1,1 +1,36 @@
-<h3>Hi</h3> <h5>Pritam,</h5> <h3>This Web page is under maintenance ...</h3>
+<div id="top" style="width: 100%; height: 100px; background: #ccc; margin: 0;">Sanvis Logo</div>
+
+<div id="mainMenuBarAnchor"></div>
+<div id="mainMenuBar" style="width: 100%; height: 30px; background: #999; margin: 0;">Sticky Panel</div>
+
+<div id="content" style="width: 100%; height: 3000px; background: #ccc; margin: 0;">
+    Page Content Panel
+    <br/>
+    <br/>
+    This panel will not jump when the sticky panel becomes stuck.
+</div>
+<script type='text/javascript' src='http://www.pixelbind.com/wp-includes/js/jquery/jquery.js?ver=1.11.2'></script>
+<script>
+$(document).ready(function() {
+    // Cache selectors for faster performance.
+    var $window = $(window),
+        $mainMenuBar = $('#mainMenuBar'),
+        $mainMenuBarAnchor = $('#mainMenuBarAnchor');
+
+    // Run this on scroll events.
+    $window.scroll(function() {
+        var window_top = $window.scrollTop();
+        var div_top = $mainMenuBarAnchor.offset().top;
+        if (window_top > div_top) {
+            // Make the div sticky.
+            $mainMenuBar.addClass('stick');
+            $mainMenuBarAnchor.height($mainMenuBar.height());
+        }
+        else {
+            // Unstick the div.
+            $mainMenuBar.removeClass('stick');
+            $mainMenuBarAnchor.height(0);
+        }
+    });
+});
+</script>
